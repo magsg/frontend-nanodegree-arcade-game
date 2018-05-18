@@ -47,15 +47,15 @@ Player.prototype.render = function() {
 };
 
 // Now instantiate your objects.
-let player = new Player(202, 400);
-let tickA = new  Enemy(10,150);
-let tickB = new  Enemy(10,250);
-let tickC = new  Enemy(10,350);
-let tickD = new  Enemy(10,450);
+let tickA = new  Enemy(10,58);
+let tickB = new  Enemy(10,140);
+let tickC = new  Enemy(10,223);
+let tickD = new  Enemy(200,140);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [tickA, tickB, tickC, tickD];
 
 // Place the player object in a variable called player
+let player = new Player(202, 400);
 
 
 
