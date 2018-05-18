@@ -1,14 +1,13 @@
 // Enemies our player must avoid
-const Enemy = function(x,y) {
+const Enemy = function(x,y,z) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-
+    this.speed = z;
 };
 
 // Update the enemy's position, required method for game
@@ -17,7 +16,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-
+    this.x += this.speed * dt;
+    if(this.x > 505){
+      this.x = -100;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -47,10 +49,10 @@ Player.prototype.render = function() {
 };
 
 // Now instantiate your objects.
-let tickA = new  Enemy(10,58);
-let tickB = new  Enemy(10,140);
-let tickC = new  Enemy(10,223);
-let tickD = new  Enemy(200,140);
+let tickA = new  Enemy(10,58,20);
+let tickB = new  Enemy(10,140,40);
+let tickC = new  Enemy(10,223,20);
+let tickD = new  Enemy(200,140,20);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [tickA, tickB, tickC, tickD];
 
