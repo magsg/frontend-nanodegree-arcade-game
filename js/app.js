@@ -30,24 +30,24 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-const Player = function(x,y,z) {
+const Player = function(x,y) {
     this.sprite = 'images/char-cat-girl.png';
     this.x = x;
     this.y = y;
-    this.speed = z;
-
 };
 Player.prototype.update = function(dt) {
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-
 };
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+//handles player's movements and keeps them from going off the screen
 
 Player.prototype.handleInput = function(k) {
   switch(k) {
@@ -74,6 +74,12 @@ Player.prototype.handleInput = function(k) {
   }
 }
 
+Player.prototype.reset = function(){
+  this.x = 202;
+  this.y = 400;
+  // this.update();
+}
+
 // Now instantiate your objects.
 let tickA = new  Enemy(10,58,20);
 let tickB = new  Enemy(10,140,40);
@@ -83,7 +89,7 @@ let tickD = new  Enemy(200,140,20);
 const allEnemies = [tickA, tickB, tickC, tickD];
 
 // Place the player object in a variable called player
-let player = new Player(202, 400, );
+let player = new Player(202, 400);
 
 
 
