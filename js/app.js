@@ -30,10 +30,11 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-const Player = function(x,y) {
+const Player = function(x,y,z) {
     this.sprite = 'images/char-cat-girl.png';
     this.x = x;
     this.y = y;
+    this.speed = z;
 
 };
 Player.prototype.update = function(dt) {
@@ -51,19 +52,26 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(k) {
   switch(k) {
     case "left":
-    this.x -= 101
+    if (this.x > 0) {
+      this.x -= 101
+      }
     break;
     case "right":
-    this.x += 101
+      if(this.x < 400){
+        this.x += 101
+      }
     break;
     case "up":
-    this.y -= 83
+    if (this.y > 0) {
+      this.y -= 83
+      }
     break;
     case "down":
-    this.y += 83
+    if (this.y < 400) {
+      this.y += 83
+      }
     break;
   }
-
 }
 
 // Now instantiate your objects.
@@ -75,7 +83,7 @@ let tickD = new  Enemy(200,140,20);
 const allEnemies = [tickA, tickB, tickC, tickD];
 
 // Place the player object in a variable called player
-let player = new Player(202, 400);
+let player = new Player(202, 400, );
 
 
 
