@@ -48,6 +48,24 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function(k) {
+  switch(k) {
+    case "left":
+    this.x -= 101
+    break;
+    case "right":
+    this.x += 101
+    break;
+    case "up":
+    this.y -= 83
+    break;
+    case "down":
+    this.y += 83
+    break;
+  }
+
+}
+
 // Now instantiate your objects.
 let tickA = new  Enemy(10,58,20);
 let tickB = new  Enemy(10,140,40);
