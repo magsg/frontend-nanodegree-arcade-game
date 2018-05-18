@@ -8,6 +8,8 @@ const Enemy = function(x,y,z) {
     this.x = x;
     this.y = y;
     this.speed = z;
+    this.width = 100;
+    this.height = 71;
 };
 
 // Update the enemy's position, required method for game
@@ -34,12 +36,11 @@ const Player = function(x,y) {
     this.sprite = 'images/char-cat-girl.png';
     this.x = x;
     this.y = y;
+    this.width = 84;
+    this.height = 83;
 };
 Player.prototype.update = function(dt) {
-
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+  this.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -74,6 +75,7 @@ Player.prototype.handleInput = function(k) {
   }
 }
 
+
 Player.prototype.reset = function(){
   this.x = 202;
   this.y = 400;
@@ -91,7 +93,41 @@ const allEnemies = [tickA, tickB, tickC, tickD];
 // Place the player object in a variable called player
 let player = new Player(202, 400);
 
+//checks for collisions
 
+// Player.prototype.checkCollisions = function() {
+//   // if(this.x < player.x + player.width &&
+//   //  this.x + this.width > player.x &&
+//   //  this.y < player.y + player.height &&
+//   //  this.height + this.y > player.y){
+//   //    console.log("collision");
+//   //  }
+//   if(Player.x < Enemy.x + Enemy.width &&
+//    Player.x + Player.width > Enemy.x &&
+//    Player.y < Enemy.y + Enemy.height &&
+//    Player.height + Player.y > Enemy.y){
+//      console.log("collision");
+//    }
+// };
+
+Player.prototype.checkCollisions = function() {
+  // if(allEnemies[i].x < player.x + player.width &&
+  //   allEnemies[i].x + allEnemies[i].width > player.x &&
+  //    allEnemies[i].y < player.y + player.height &&
+  //    allEnemies[i].height + allEnemies[i].y > player.y){
+  //      console.log("collision");
+  //    }
+
+  for(i = 0; i<allEnemies.length; i++){
+    console.log(allEnemies[i].x);
+  if (player.x < allEnemies[i].x + allEnemies[i].width  &&
+           player.x + player.width > allEnemies[i].x &&
+           player.y < allEnemies[i].y + allEnemies[i].height &&
+           player.height + player.y > allEnemies[i].y) {
+                console.log("collision");
+              }
+            }
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
