@@ -94,44 +94,31 @@ const allEnemies = [tickA, tickB, tickC, tickD];
 // Place the player object in a variable called player
 let player = new Player(202, 400);
 
-//checks for collisions
+//checks for collisions v1
 
-// Player.prototype.checkCollisions = function() {
-//   // if(this.x < player.x + player.width &&
-//   //  this.x + this.width > player.x &&
-//   //  this.y < player.y + player.height &&
-//   //  this.height + this.y > player.y){
-//   //    console.log("collision");
-//   //  }
-//   if(Player.x < Enemy.x + Enemy.width &&
-//    Player.x + Player.width > Enemy.x &&
-//    Player.y < Enemy.y + Enemy.height &&
-//    Player.height + Player.y > Enemy.y){
-//      console.log("collision");
-//    }
-// };
+  // Enemy.prototype.checkCollisions = function(){
+  //   for(i = 0; i < allEnemies.length; i++){
+  //     if (allEnemies[i].x < player.x + player.width &&
+  //   allEnemies[i].x + allEnemies[i].width > player.x &&
+  //    allEnemies[i].y < player.y + player.height &&
+  //    allEnemies[i].height + allEnemies[i].y > player.y){
+  //      player.reset();
+  //    }};
+  //  }
 
-
-  Enemy.prototype.checkCollisions = function(){
-    for(i = 0; i < allEnemies.length; i++){
-      if (allEnemies[i].x < player.x + player.width &&
-    allEnemies[i].x + allEnemies[i].width > player.x &&
-     allEnemies[i].y < player.y + player.height &&
-     allEnemies[i].height + allEnemies[i].y > player.y){
+//checks for object collisions, function adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+Enemy.prototype.checkCollisions = function() {
+for (let x of allEnemies) {
+  if (this.x < player.x + player.width &&
+    this.x + this.width > player.x &&
+    this.y < player.y + player.height &&
+     this.height + this.y > player.y){
        player.reset();
      }};
-   }
+};
 
 
-  // for(i = 0; i<allEnemies.length; i++){
-  //   console.log(allEnemies[i].x);
-  // if (player.x < allEnemies[i].x + allEnemies[i].width  &&
-  //          player.x + player.width > allEnemies[i].x &&
-  //          player.y < allEnemies[i].y + allEnemies[i].height &&
-  //          player.height + player.y > allEnemies[i].y) {
-  //               console.log("collision");
-  //             }
-  //           }
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
