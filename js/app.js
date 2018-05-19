@@ -41,7 +41,15 @@ const Player = function(x,y) {
     this.height = 60;
 };
 Player.prototype.update = function(dt) {
-  // this.checkCollisions();
+  if(this.y === -15){
+    document.getElementById("modal_content").style.display = "block";
+    document.getElementsByTagName("p").innerHTML = ("You've made it!");
+    document.getElementById("close").addEventListener("click", function() {
+    document.getElementById("modal_content").style.display = "none";
+    });
+    console.log("I'm here");
+    alert("congratulations! You've made it!")// this.reset();
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -77,10 +85,19 @@ Player.prototype.handleInput = function(k) {
 }
 
 
-Player.prototype.reset = function(){
+Player.prototype.restart = function(){
   this.x = 202;
   this.y = 400;
-  // this.update();
+}
+
+Player.prototype.win = function(){
+    // document.getElementsByTagName("p").innerHTML = ("You've made it!");
+    // document.getElementById(".modal_content").style.display = "block";
+    // document.getElementById(".close").addEventListener("click", function() {
+    // document.getElementById(".modal_content").style.display = "none";
+    // });
+    // reset();
+    console.log("I'm here")
 }
 
 // Now instantiate your objects.
@@ -113,9 +130,11 @@ for (let x of allEnemies) {
     this.x + this.width > player.x &&
     this.y < player.y + player.height &&
      this.height + this.y > player.y){
-       player.reset();
+       player.restart();
      }};
 };
+
+//player wins
 
 
 
