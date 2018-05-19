@@ -8,8 +8,8 @@ const Enemy = function(x,y,z) {
     this.x = x;
     this.y = y;
     this.speed = z;
-    this.width = 100;
-    this.height = 71;
+    this.width = 75;
+    this.height = 30;
 };
 
 // Update the enemy's position, required method for game
@@ -37,8 +37,8 @@ const Player = function(x,y) {
     this.sprite = 'images/char-cat-girl.png';
     this.x = x;
     this.y = y;
-    this.width = 84;
-    this.height = 83;
+    this.width = 60;
+    this.height = 60;
 };
 Player.prototype.update = function(dt) {
   // this.checkCollisions();
