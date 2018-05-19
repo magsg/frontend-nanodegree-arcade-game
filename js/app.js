@@ -22,6 +22,7 @@ Enemy.prototype.update = function(dt) {
     if(this.x > 505){
       this.x = -100;
     }
+    this.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -40,7 +41,7 @@ const Player = function(x,y) {
     this.height = 83;
 };
 Player.prototype.update = function(dt) {
-  this.checkCollisions();
+  // this.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -110,24 +111,27 @@ let player = new Player(202, 400);
 //    }
 // };
 
-Player.prototype.checkCollisions = function() {
-  // if(allEnemies[i].x < player.x + player.width &&
-  //   allEnemies[i].x + allEnemies[i].width > player.x &&
-  //    allEnemies[i].y < player.y + player.height &&
-  //    allEnemies[i].height + allEnemies[i].y > player.y){
-  //      console.log("collision");
-  //    }
 
-  for(i = 0; i<allEnemies.length; i++){
-    console.log(allEnemies[i].x);
-  if (player.x < allEnemies[i].x + allEnemies[i].width  &&
-           player.x + player.width > allEnemies[i].x &&
-           player.y < allEnemies[i].y + allEnemies[i].height &&
-           player.height + player.y > allEnemies[i].y) {
-                console.log("collision");
-              }
-            }
-};
+  Enemy.prototype.checkCollisions = function(){
+    for(i = 0; i < allEnemies.length; i++){
+      if (allEnemies[i].x < player.x + player.width &&
+    allEnemies[i].x + allEnemies[i].width > player.x &&
+     allEnemies[i].y < player.y + player.height &&
+     allEnemies[i].height + allEnemies[i].y > player.y){
+       player.reset();
+     }};
+   }
+
+
+  // for(i = 0; i<allEnemies.length; i++){
+  //   console.log(allEnemies[i].x);
+  // if (player.x < allEnemies[i].x + allEnemies[i].width  &&
+  //          player.x + player.width > allEnemies[i].x &&
+  //          player.y < allEnemies[i].y + allEnemies[i].height &&
+  //          player.height + player.y > allEnemies[i].y) {
+  //               console.log("collision");
+  //             }
+  //           }
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
