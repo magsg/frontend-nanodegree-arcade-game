@@ -13,11 +13,12 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 } */
 
-.modal_content {
+#modal_content {
   display: none;
   position: fixed;
   background-color: #fefefe;
-  margin: auto;
+  margin-top: 20%;
+  margin-left: 7%;
   padding: 20px;
   border: 1px solid gray;
   width: 80%;
@@ -33,7 +34,7 @@ body {
   width: 300px;
 } */
 
-.close {
+#close {
   color: gray;
   float: right;
   font-size: 28px;

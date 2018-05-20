@@ -49,7 +49,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//handles player's movements and keeps them from going off the screen
+//handles player's movements, keeps them from going off the screen and checks the win condition
 
 Player.prototype.handleInput = function(k) {
   if (this.win() != true){
@@ -75,7 +75,14 @@ Player.prototype.handleInput = function(k) {
       }
     break;
   }
-}
+}else{
+    console.log("I'm here");
+    document.getElementById("modal_content").style.display = "block";
+    document.getElementById("close").addEventListener("click", function() {
+    document.getElementById("modal_content").style.display = "none";
+    player.restart();
+    });
+  }
 }
 
 
@@ -84,16 +91,10 @@ Player.prototype.restart = function(){
   this.y = 400;
 }
 
+//win function
 Player.prototype.win = function(){
   if(this.y === -15){
     return true;
-    document.getElementById("modal_content").style.display = "block";
-    document.getElementsByTagName("p").innerHTML = ("You've made it!");
-    document.getElementById("close").addEventListener("click", function() {
-    document.getElementById("modal_content").style.display = "none";
-    });
-    console.log("I'm here");
-    // alert("congratulations! You've made it!")// this.reset();
   }
 }
 
@@ -130,11 +131,6 @@ for (let x of allEnemies) {
        player.restart();
      }};
 };
-
-//player wins
-
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
