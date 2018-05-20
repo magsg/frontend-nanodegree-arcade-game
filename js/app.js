@@ -41,15 +41,7 @@ const Player = function(x,y) {
     this.height = 60;
 };
 Player.prototype.update = function(dt) {
-  if(this.y === -15){
-    document.getElementById("modal_content").style.display = "block";
-    document.getElementsByTagName("p").innerHTML = ("You've made it!");
-    document.getElementById("close").addEventListener("click", function() {
-    document.getElementById("modal_content").style.display = "none";
-    });
-    console.log("I'm here");
-    alert("congratulations! You've made it!")// this.reset();
-  }
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -60,6 +52,7 @@ Player.prototype.render = function() {
 //handles player's movements and keeps them from going off the screen
 
 Player.prototype.handleInput = function(k) {
+  if (this.win() != true){
   switch(k) {
     case "left":
     if (this.x > 0) {
@@ -83,6 +76,7 @@ Player.prototype.handleInput = function(k) {
     break;
   }
 }
+}
 
 
 Player.prototype.restart = function(){
@@ -91,13 +85,16 @@ Player.prototype.restart = function(){
 }
 
 Player.prototype.win = function(){
-    // document.getElementsByTagName("p").innerHTML = ("You've made it!");
-    // document.getElementById(".modal_content").style.display = "block";
-    // document.getElementById(".close").addEventListener("click", function() {
-    // document.getElementById(".modal_content").style.display = "none";
-    // });
-    // reset();
-    console.log("I'm here")
+  if(this.y === -15){
+    return true;
+    document.getElementById("modal_content").style.display = "block";
+    document.getElementsByTagName("p").innerHTML = ("You've made it!");
+    document.getElementById("close").addEventListener("click", function() {
+    document.getElementById("modal_content").style.display = "none";
+    });
+    console.log("I'm here");
+    // alert("congratulations! You've made it!")// this.reset();
+  }
 }
 
 // Now instantiate your objects.
