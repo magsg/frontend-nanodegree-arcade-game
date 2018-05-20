@@ -14,12 +14,16 @@ const Enemy = function(x,y,z) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
     this.x += this.speed * dt;
     if(this.x > 505){
+      // this.speed = Math.floor(Math.random() * Math.floor(1000));
+      this.speed = Math.random() * (1000 - 80) + 80;
       this.x = -100;
     }
     this.checkCollisions();
@@ -98,11 +102,15 @@ Player.prototype.win = function(){
   }
 }
 
+
+
+
 // Now instantiate your objects.
-let tickA = new  Enemy(100,58,10);
-let tickB = new  Enemy(400,140,10);
-let tickC = new  Enemy(10,223,10);
-let tickD = new  Enemy(200,140,10);
+let tickA = new  Enemy(100,58,200);
+let tickB = new  Enemy(400,140,200);
+let tickC = new  Enemy(10,223,200);
+let tickD = new  Enemy(300,140,200);
+
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [tickA, tickB, tickC, tickD];
 
