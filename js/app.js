@@ -72,6 +72,13 @@ Player.prototype.handleInput = function(k) {
     if (this.y > 0) {
       this.y -= 83
       }
+    if (this.y < 0){
+          document.getElementById("modal_content").style.display = "block";
+          document.getElementById("close").addEventListener("click", function() {
+          document.getElementById("modal_content").style.display = "none";
+          player.restart();
+          });
+    }
     break;
     case "down":
     if (this.y < 400) {
@@ -79,14 +86,7 @@ Player.prototype.handleInput = function(k) {
       }
     break;
   }
-}else{
-    console.log("I'm here");
-    document.getElementById("modal_content").style.display = "block";
-    document.getElementById("close").addEventListener("click", function() {
-    document.getElementById("modal_content").style.display = "none";
-    player.restart();
-    });
-  }
+}
 }
 
 
@@ -106,10 +106,10 @@ Player.prototype.win = function(){
 
 
 // Now instantiate your objects.
-let tickA = new  Enemy(100,58,200);
-let tickB = new  Enemy(400,140,200);
-let tickC = new  Enemy(10,223,200);
-let tickD = new  Enemy(300,140,200);
+let tickA = new  Enemy(100,58,100);
+let tickB = new  Enemy(400,140,100);
+let tickC = new  Enemy(10,223,100);
+let tickD = new  Enemy(300,140,100);
 
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [tickA, tickB, tickC, tickD];
