@@ -1,11 +1,11 @@
 body {
-    text-align: center;
-    background-color: #222222;
+  text-align: center;
+  background-color: #222222;
 }
 
 h1 {
   font-family: 'Indie Flower', cursive;
-  text-shadow: rgba(242,111,242,1) 1px 0 10px;
+  text-shadow: rgba(242, 111, 242, 1) 1px 0 10px;
 }
 
 #modal_content {
