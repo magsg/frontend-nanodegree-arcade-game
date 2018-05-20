@@ -37,8 +37,8 @@ const Player = function(x,y) {
     this.sprite = 'images/char-cat-girl.png';
     this.x = x;
     this.y = y;
-    this.width = 60;
-    this.height = 60;
+    this.width = 45;
+    this.height = 45;
 };
 Player.prototype.update = function(dt) {
 
@@ -93,16 +93,16 @@ Player.prototype.restart = function(){
 
 //win function
 Player.prototype.win = function(){
-  if(this.y === -15){
+  if(this.y < 0 ){
     return true;
   }
 }
 
 // Now instantiate your objects.
-let tickA = new  Enemy(10,58,20);
-let tickB = new  Enemy(10,140,40);
-let tickC = new  Enemy(10,223,20);
-let tickD = new  Enemy(200,140,20);
+let tickA = new  Enemy(100,58,10);
+let tickB = new  Enemy(400,140,10);
+let tickC = new  Enemy(10,223,10);
+let tickD = new  Enemy(200,140,10);
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [tickA, tickB, tickC, tickD];
 
